@@ -25,7 +25,15 @@ app.get('/getalldata', async (req, res) => {
   app.post('/savedata', async (req, res) => {
     
     const data = new Data({
-        city: req.body.city,
+      intensity: req.body.intensity,
+      likelihood: req.body.likelihood,
+      relevance: req.body.relevance,
+      // start_year: req.body.start_year,
+      // end_year:req.body.end_year,
+      country: req.body.country,
+      topics: req.body.topics,
+      region: req.body.region,
+      city: req.body.city
       });
     
       try {
