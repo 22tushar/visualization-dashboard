@@ -2,7 +2,7 @@ import { Flex, Grid, GridItem, Show, useColorMode } from "@chakra-ui/react";
 import NavBar from "../components/NavBar";
 import Dashboard from "../components/SideBar";
 import MyResponsivePie from "../components/PieChart";
-import "/Users/sarav/Dashboard/src/index.css";
+// import "/Users/sarav/Dashboard/src/index.css";
 
 const PiePage = () => {
   const { toggleColorMode, colorMode } = useColorMode();
