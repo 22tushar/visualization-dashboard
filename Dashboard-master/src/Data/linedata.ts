@@ -4,20 +4,12 @@ export const LineData = [
       "color": "hsl(18, 70%, 50%)",
       "data": [
         {
-          "x": "plane",
+          "x": "topic",
           "y": 174
         },
         {
-          "x": "helicopter",
+          "x": "intensity",
           "y": 236
-        },
-        {
-          "x": "boat",
-          "y": 245
-        },
-        {
-          "x": "train",
-          "y": 210
         },
        
       ]

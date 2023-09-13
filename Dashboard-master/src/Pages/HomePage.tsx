@@ -63,7 +63,7 @@ const HomePage = () => {
             bg={colorMode === "dark" ? "whiteAlpha.100" : "#e6f2ff"}
             shadow="dark-lg"
           >
-            <MyResponsivePie />
+            {/* <MyResponsivePie /> */}
           </GridItem>
           <Show above="lg">
             <GridItem
@@ -74,7 +74,7 @@ const HomePage = () => {
               shadow="dark-lg"
               boxSize="100%"
             >
-              <MyResponsiveCalendar />
+              {/* <MyResponsiveCalendar /> */}
             </GridItem>
           </Show>
           <GridItem
