@@ -14,6 +14,7 @@ import {
   FcDataSheet,
   FcTemplate,
   FcSettings,
+  FcBarChart,
 } from "react-icons/fc";
 import SideItems from "./SideItems";
 
@@ -64,10 +65,10 @@ const SideBar = () => {
         />
         <Divider display={navSize === "sm" ? "none" : "flex"} />
         <SideItems
-          children="table"
+          children="barchart"
           sizeNav={navSize}
-          icon={FcDataSheet}
-          title="Table"
+          icon={FcBarChart}
+          title="barchart"
         />
         <Divider display={navSize === "sm" ? "none" : "flex"} />
         <SideItems

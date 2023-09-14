@@ -6,6 +6,7 @@ import LinePage from "./Pages/LinePage";
 import SettingPage from "./Pages/SettingPage";
 import "../src/index.css";
 import { useEffect } from "react";
+import BarPage from "./Pages/BarPage";
 
 function App() {
   useEffect(() => {
@@ -20,8 +21,9 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="/piechart" element={<PiePage />} />
         <Route path="/settings" element={<SettingPage />} />
-        <Route path="/table" element={<TablePage />} />
+        <Route path="/barchart" element={<BarPage />} />
         <Route path="/linechart" element={<LinePage />} />
+        <Route path="/barchart" element={<BarPage />} />
       </Routes>
     </>
   );

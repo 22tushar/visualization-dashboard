@@ -1,9 +1,61 @@
 import { ResponsivePie } from "@nivo/pie";
-import { PieData as data } from "../Data/pieData";
+// import { PieData as data } from "../Data/pieData";
 import { NivoTheme } from "../assets/NivoTheme";
-const MyResponsivePie = () => (
+import React, { useState, useEffect } from 'react';
+const MyResponsivePie = () => {
+  
+ 
+  const [MongoLineData, setData] = useState([
+    {
+      "id": "oil",
+      "label": "oil",
+      "value": 67,
+      "color": "hsl(106, 70%, 50%)"
+    },
+    {
+      "id": "gas",
+      "label": "gas",
+      "value": 50,
+      "color": "hsl(17, 70%, 50%)"
+    },
+    {
+      "id":"market",
+      "label": "market",
+      "value": 45,
+      "color": "hsl(17, 70%, 50%)"
+    },
+    {
+      "id": "gdp",
+      "label": "gdp",
+      "value": 88,
+      "color": "hsl(17, 70%, 50%)"
+    }
+  ])
+  
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch('https://api.example.com/data'); // Replace with your API endpoint
+  //       const result = await response.json();
+  //       setData(result);
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);  
+
+  const PieData= MongoLineData.map(item => {
+    return {
+      id: item.id,
+      color: `hsl(${Math.random() * 360}, 70%, 50%)`, // Assign random color or use a logic to generate unique colors
+      value:item.value
+    }
+  });
+  return (
   <ResponsivePie
-    data={data}
+    data={PieData}
     margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
     innerRadius={0.4}
     padAngle={0.7}
@@ -119,6 +171,7 @@ const MyResponsivePie = () => (
       },
     ]}
   />
-);
+  )
+};
 
 export default MyResponsivePie;

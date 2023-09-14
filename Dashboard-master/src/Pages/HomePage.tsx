@@ -8,9 +8,14 @@ import MyResponsiveCalendar from "../components/Calender";
 import LineChart from "../components/LineChart";
 import "../index.css";
 import Table from "../components/Table";
+import BarChart from "../components/BarChart";
+import BarCharts from "../components/BarChart";
+
 const HomePage = () => {
   const [navSize, setNavSize] = useState("sm");
   const { toggleColorMode, colorMode } = useColorMode();
+
+ 
   return (
     <span>
       <Flex minH="100vh" flexDir="column">
@@ -63,7 +68,7 @@ const HomePage = () => {
             bg={colorMode === "dark" ? "whiteAlpha.100" : "#e6f2ff"}
             shadow="dark-lg"
           >
-            {/* <MyResponsivePie /> */}
+            <MyResponsivePie />
           </GridItem>
           <Show above="lg">
             <GridItem
@@ -75,6 +80,7 @@ const HomePage = () => {
               boxSize="100%"
             >
               {/* <MyResponsiveCalendar /> */}
+              <BarCharts/>
             </GridItem>
           </Show>
           <GridItem
