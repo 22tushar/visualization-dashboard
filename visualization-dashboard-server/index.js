@@ -31,16 +31,25 @@ app.get('/getalldata', async (req, res) => {
 
 app.post('/savedata', async (req, res) => {
   
+
   const data = new Data({
-    intensity: req.body.intensity,
-    likelihood: req.body.likelihood,
-    relevance: req.body.relevance,
-    start_year: req.body.start_year,
-    end_year:req.body.end_year,
-    country: req.body.country,
-    topics: req.body.topics,
+    end_year: req.body.end_year,
+    intensity:req.body.intensity,
+    sector:req.body.sector,
+    topic: req.body.topic,
+    insight: req.body.insight,
+    url: req.body.url,
     region: req.body.region,
-    city: req.body.city
+    start_year: req.body.start_year,
+    impact: req.body.impact,
+    added: req.body.added,
+    published: req.body.published,
+    country: req.body.country,
+    relevance: req.body.relevance,
+    pestle: req.body.pestle,
+    source: req.body.source,
+    title: req.body.title,
+    likelihood: req.body.likelihood   
     });
   
     try {
