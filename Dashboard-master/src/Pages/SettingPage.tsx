@@ -1,9 +1,27 @@
 import { Flex, Grid, GridItem, Show, useColorMode } from "@chakra-ui/react";
 import NavBar from "../components/NavBar";
 import Dashboard from "../components/SideBar";
+import Filters from "../components/Filters";
+import { useEffect, useState } from "react";
 
 const LinePage = () => {
   const { toggleColorMode, colorMode } = useColorMode();
+  const [MongofilterData, setData] = useState([]);
+
+  useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/getalldata'); // Replace with your API endpoint
+      const result = await response.json();
+      setData(result);
+      console.log(result)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  fetchData();
+}, []);  
   return (
     <span>
       <Flex minH="100vh" flexDirection="column">
@@ -31,7 +49,7 @@ const LinePage = () => {
             shadow="dark-lg"
             marginY="10px"
           >
-            <NavBar children="Setting" />
+            <NavBar children="All Filters" />
           </GridItem>
           <Show above="lg">
             <GridItem
@@ -48,7 +66,7 @@ const LinePage = () => {
 
           <GridItem
             bg={colorMode === "dark" ? "whiteAlpha.100" : "#e6f2ff"}
-            title="settings"
+            title="All Filters"
             className="Chart"
             area="chart"
             borderRadius={10}
@@ -56,7 +74,7 @@ const LinePage = () => {
             borderBlockStartColor="ActiveBorder"
             shadow="dark-lg"
           >
-            <h1>settings</h1>
+            <Filters data={MongofilterData}/>
           </GridItem>
         </Grid>
       </Flex>
