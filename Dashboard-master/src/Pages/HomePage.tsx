@@ -3,7 +3,7 @@ import NavBar from "../components/NavBar";
 import Dashboard from "../components/SideBar";
 import MyResponsivePie from "../components/PieChart";
 import { useColorMode } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MyResponsiveCalendar from "../components/Calender";
 import LineChart from "../components/LineChart";
 import "../index.css";
@@ -15,6 +15,22 @@ const HomePage = () => {
   const [navSize, setNavSize] = useState("sm");
   const { toggleColorMode, colorMode } = useColorMode();
 
+  const [MongoData, setData] = useState([]);
+
+  useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/getalldata'); // Replace with your API endpoint
+      const result = await response.json();
+      setData(result);
+      console.log(result)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  fetchData();
+}, []);  
  
   return (
     <span>
@@ -68,7 +84,7 @@ const HomePage = () => {
             bg={colorMode === "dark" ? "whiteAlpha.100" : "#e6f2ff"}
             shadow="dark-lg"
           >
-            <MyResponsivePie />
+            <MyResponsivePie MongoPieData={MongoData} />
           </GridItem>
           <Show above="lg">
             <GridItem
@@ -90,7 +106,7 @@ const HomePage = () => {
             bg={colorMode === "dark" ? "whiteAlpha.100" : "#e6f2ff"}
             shadow="dark-lg"
           >
-            <LineChart />
+            <LineChart MongoLineData={MongoData}/>
           </GridItem>
           <Show below="lg">
             <GridItem

@@ -35,7 +35,7 @@ const LinePage = () => {
             marginY="10px"
             shadow="dark-lg"
           >
-            <NavBar children="LineChart"></NavBar>
+            <NavBar children="BarChart"></NavBar>
           </GridItem>
           <Show above="lg">
             <GridItem

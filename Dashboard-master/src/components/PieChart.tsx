@@ -2,35 +2,35 @@ import { ResponsivePie } from "@nivo/pie";
 // import { PieData as data } from "../Data/pieData";
 import { NivoTheme } from "../assets/NivoTheme";
 import React, { useState, useEffect } from 'react';
-const MyResponsivePie = () => {
+const MyResponsivePie = ({MongoPieData}:any) => {
   
  
-  const [MongoLineData, setData] = useState([
-    {
-      "id": "oil",
-      "label": "oil",
-      "value": 67,
-      "color": "hsl(106, 70%, 50%)"
-    },
-    {
-      "id": "gas",
-      "label": "gas",
-      "value": 50,
-      "color": "hsl(17, 70%, 50%)"
-    },
-    {
-      "id":"market",
-      "label": "market",
-      "value": 45,
-      "color": "hsl(17, 70%, 50%)"
-    },
-    {
-      "id": "gdp",
-      "label": "gdp",
-      "value": 88,
-      "color": "hsl(17, 70%, 50%)"
-    }
-  ])
+  // const [MongoLineData, setData] = useState([
+  //   {
+  //     "id": "oil",
+  //     "label": "oil",
+  //     "value": 67,
+  //     "color": "hsl(106, 70%, 50%)"
+  //   },
+  //   {
+  //     "id": "gas",
+  //     "label": "gas",
+  //     "value": 50,
+  //     "color": "hsl(17, 70%, 50%)"
+  //   },
+  //   {
+  //     "id":"market",
+  //     "label": "market",
+  //     "value": 45,
+  //     "color": "hsl(17, 70%, 50%)"
+  //   },
+  //   {
+  //     "id": "gdp",
+  //     "label": "gdp",
+  //     "value": 88,
+  //     "color": "hsl(17, 70%, 50%)"
+  //   }
+  // ])
   
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -45,12 +45,27 @@ const MyResponsivePie = () => {
 
   //   fetchData();
   // }, []);  
+const topicCounts:any = {};
+MongoPieData.forEach((entry:any) => {
+    const topic = entry.topic;
+    if (topic) {
+        topicCounts[topic] = (topicCounts[topic] || 0) + 1;
+    }
+});
 
-  const PieData= MongoLineData.map(item => {
+// Convert the topic counts to the desired format
+const topicCountsArray = Object.keys(topicCounts).map(topic => ({ topic, count: topicCounts[topic] }));
+
+// Now, topicCountsArray contains the desired format
+console.log(topicCountsArray);
+
+  const PieData= topicCountsArray.map((item:any)=> {
     return {
-      id: item.id,
+      id: item.topic,
+      label:item.topic,
+      value:item.count,
       color: `hsl(${Math.random() * 360}, 70%, 50%)`, // Assign random color or use a logic to generate unique colors
-      value:item.value
+
     }
   });
   return (

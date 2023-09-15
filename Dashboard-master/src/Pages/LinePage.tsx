@@ -3,9 +3,29 @@ import NavBar from "../components/NavBar";
 import Dashboard from "../components/SideBar";
 import LineChart from "../components/LineChart";
 import { useColorMode } from "@chakra-ui/react";
+import React, { useState, useEffect } from 'react';
+import { nullable } from "zod";
 
 const LinePage = () => {
+  
   const { toggleColorMode, colorMode } = useColorMode();
+  const [MongoLineData, setData] = useState([]);
+
+
+  useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/getalldata'); // Replace with your API endpoint
+      const result = await response.json();
+      setData(result);
+      console.log(result)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  fetchData();
+}, []);  
 
   return (
     <span>
@@ -57,7 +77,7 @@ const LinePage = () => {
             borderRadius={10}
             shadow="dark-lg"
           >
-            <LineChart />
+            <LineChart MongoLineData={MongoLineData}/>
           </GridItem>
         </Grid>
       </Flex>

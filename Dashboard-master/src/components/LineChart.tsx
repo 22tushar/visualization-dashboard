@@ -3,86 +3,82 @@ import { ResponsiveLine } from "@nivo/line";
 import { NivoTheme } from "../assets/NivoTheme";
 import React, { useState, useEffect } from 'react';
 
-const LineChart = () => {
+const LineChart = ({MongoLineData}: any) => {
 
   // Assuming your MongoDB data is stored in a variable called mongoData
-  const [MongoLineData, setData] = useState([ {
-    "id": "japan",
-    "color": "hsl(18, 70%, 50%)",
-    "data": [
-      {
-        "x": "topic",
-        "y": 174
-      },
-      {
-        "x": "intensity",
-        "y": 236
-      },
-    ]
-  },
+    
+//   const [MongoLineData, setData] = useState([ {
+//     "id": "japan",
+//     "color": "hsl(18, 70%, 50%)",
+//     "data": [
+//       {
+//         "x": "topic",
+//         "y": 174
+//       },
+//       {
+//         "x": "intensity",
+//         "y": 236
+//       },
+//     ]
+//   },
 
-    {
+//     {
 
-    "id": "us",
-    "color": "hsl(326, 70%, 50%)",
-    "data": [
-      {
-        "x": "topic",
-        "y": 125
-      },
-      {
-        "x": "intensity",
-        "y": 68
-      },
-    ]
-    },
+//     "id": "us",
+//     "color": "hsl(326, 70%, 50%)",
+//     "data": [
+//       {
+//         "x": "topic",
+//         "y": 125
+//       },
+//       {
+//         "x": "intensity",
+//         "y": 68
+//       },
+//     ]
+//     },
 
-    {
+//     {
 
-      "id": "Inida",
-      "color": "hsl(326, 70%, 50%)",
-      "data": [
-        {
-          "x": "topic",
-          "y": 50
-        },
-        {
-          "x": "intensity",
-          "y": 99
-        },
-      ]
-      }
+//       "id": "Inida",
+//       "color": "hsl(326, 70%, 50%)",
+//       "data": [
+//         {
+//           "x": "topic",
+//           "y": 50
+//         },
+//         {
+//           "x": "intensity",
+//           "y": 99
+//         },
+//       ]
+//       }
 
-]);
+// ]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://api.example.com/data'); // Replace with your API endpoint
-        const result = await response.json();
-        setData(result);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+// useEffect(() => {
+//   const fetchData = async () => {
+//     try {
+//       const response = await fetch('http://localhost:5000/getalldata'); // Replace with your API endpoint
+//       const result = await response.json();
+//       setData(result);
+//     } catch (error) {
+//       console.error('Error fetching data:', error);
+//     }
+//   };
 
-    fetchData();
-  }, []);  
+//   fetchData();
+// }, []);  
 
-const LineData= MongoLineData.map(item => {
+
+const LineData= MongoLineData.map((item:any) => {
   return {
-    id: item.id,
+    id: item.country,
     color: `hsl(${Math.random() * 360}, 70%, 50%)`, // Assign random color or use a logic to generate unique colors
-    data:item.data.map(d => {
-        return{
-          x:d.x,
-          y:d.y
-        } 
-    })
-  };
-});
-
-// export const LineData = formattedData;
+    data:[{x:"intensity",y:item.intensity},{x:"relavance",y:item.relevance}]
+    };
+  });
+  
 
   return (
     <ResponsiveLine

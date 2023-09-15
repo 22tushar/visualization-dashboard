@@ -2,10 +2,27 @@ import { Flex, Grid, GridItem, Show, useColorMode } from "@chakra-ui/react";
 import NavBar from "../components/NavBar";
 import Dashboard from "../components/SideBar";
 import MyResponsivePie from "../components/PieChart";
+import { useEffect, useState } from "react";
 // import "/Users/sarav/Dashboard/src/index.css";
 
 const PiePage = () => {
   const { toggleColorMode, colorMode } = useColorMode();
+
+  const [MongoPieData, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/getalldata'); // Replace with your API endpoint
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);  
 
   return (
     <span>
@@ -58,7 +75,7 @@ const PiePage = () => {
             borderBlockStartColor="ActiveBorder"
             shadow="dark-lg"
           >
-            <MyResponsivePie />
+            <MyResponsivePie MongoPieData={MongoPieData} />
           </GridItem>
         </Grid>
       </Flex>
