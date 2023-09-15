@@ -4,10 +4,28 @@ import Dashboard from "../components/SideBar";
 import LineChart from "../components/LineChart";
 import { useColorMode } from "@chakra-ui/react";
 import BarCharts from "../components/BarChart";
+import { useEffect, useState } from "react";
 
 const LinePage = () => {
   const { toggleColorMode, colorMode } = useColorMode();
 
+  const [MongoBarData, setData] = useState([]);
+
+
+  useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/getalldata'); // Replace with your API endpoint
+      const result = await response.json();
+      setData(result);
+      console.log(result)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  fetchData();
+}, []);  
   return (
     <span>
       <Flex minH="100vh" flexDirection="column">
@@ -58,7 +76,7 @@ const LinePage = () => {
             borderRadius={10}
             shadow="dark-lg"
           >
-            <BarCharts/>
+            <BarCharts MongoBarData={MongoBarData}/>
           </GridItem>
         </Grid>
       </Flex>

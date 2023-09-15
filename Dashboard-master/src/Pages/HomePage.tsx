@@ -96,7 +96,7 @@ const HomePage = () => {
               boxSize="100%"
             >
               {/* <MyResponsiveCalendar /> */}
-              <BarCharts/>
+              <BarCharts MongoData={MongoData}/>
             </GridItem>
           </Show>
           <GridItem
