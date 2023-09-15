@@ -41,7 +41,7 @@ const BarCharts = ({MongoBarData}:any) => {
         // country:" "+`${item.country}`+", "+"likelihood : "+item.likelihood,
         country:item.country,
         likelihood:  item.likelihood,
-        // fee:item.source
+        fee:item.region
       }
     });
   return (

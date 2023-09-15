@@ -69,8 +69,8 @@ const LinePage = () => {
           </Show>
 
           <GridItem
-            title="LineChart"
-            className="linechart"
+            title="BarChart"
+            className="BarChart"
             area="chart"
             bg={colorMode === "dark" ? "whiteAlpha.100" : "#e6f2ff"}
             borderRadius={10}
