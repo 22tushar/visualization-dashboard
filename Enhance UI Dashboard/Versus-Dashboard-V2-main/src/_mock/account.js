@@ -1,8 +1,8 @@
 // ----------------------------------------------------------------------
 
 const account = {
-  displayName: 'James Balogun',
-  email: 'jamesb@gmail.com',
+  displayName: 'Tushar Gehlot',
+  email: 'tushargehlot123@gmail.com',
   photoURL: '/static/mock-images/avatars/avatar_6.jpg',
 };
 

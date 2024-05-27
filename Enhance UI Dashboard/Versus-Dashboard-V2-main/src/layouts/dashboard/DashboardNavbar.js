@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 // material
 import { alpha, styled } from '@mui/material/styles';
-import { Box, Stack, AppBar, Toolbar, IconButton } from '@mui/material';
+import { Box, Stack, AppBar, Container, Typography,Toolbar, IconButton } from '@mui/material';
 // components
 import Iconify from '../../components/Iconify';
 //
@@ -43,18 +43,31 @@ DashboardNavbar.propTypes = {
 export default function DashboardNavbar({ onOpenSidebar }) {
   return (
     <RootStyle>
+        
       <ToolbarStyle>
+      <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
+          {/* <LanguagePopover /> */}
+          <Typography variant="h4" color={'black'} gutterBottom>
+             Unfluke
+          </Typography>
+        </Stack>
         <IconButton onClick={onOpenSidebar} sx={{ mr: 1, color: 'text.primary', display: { lg: 'none' } }}>
           <Iconify icon="eva:menu-2-fill" />
+        
         </IconButton>
 
         <Searchbar />
+       
         <Box sx={{ flexGrow: 1 }} />
 
         <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
-          <LanguagePopover />
+          {/* <LanguagePopover /> */}
+          {/* <Typography variant="h2" color={'black'} gutterBottom>
+             Unfluke
+          </Typography> */}
           <NotificationsPopover />
           <AccountPopover />
+          
         </Stack>
       </ToolbarStyle>
     </RootStyle>

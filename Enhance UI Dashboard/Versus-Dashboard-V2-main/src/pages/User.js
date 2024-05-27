@@ -32,11 +32,13 @@ import USERLIST from '../_mock/user';
 
 const TABLE_HEAD = [
   { id: 'name', label: 'Name', alignRight: false },
-  { id: 'company', label: 'Company', alignRight: false },
-  { id: 'role', label: 'Role', alignRight: false },
-  { id: 'isVerified', label: 'Verified', alignRight: false },
-  { id: 'status', label: 'Status', alignRight: false },
-  { id: '' },
+  { id: 'Calmar Ratio', label: 'Calmar Ratio', alignRight: false },
+  { id: 'Overall Profit', label: 'Overall Profit', alignRight: false },
+  { id: 'profit', label: 'Avg. Daily Profit', alignRight: false },
+  { id: 'win' , label: 'Win %(Day)', alignRight: false },
+  { id: 'price', label: 'Price', alignRight: false },
+  { id: 'action', label: 'Action', alignRight: false },
+
 ];
 
 // ----------------------------------------------------------------------
@@ -137,16 +139,21 @@ export default function User() {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            User
+          Basic Backtest
+          </Typography>
+          <Typography variant="h2" gutterBottom>
+             LeaderBoards
           </Typography>
           <Button variant="contained" component={RouterLink} to="#" startIcon={<Iconify icon="eva:plus-fill" />}>
             New User
           </Button>
+         
         </Stack>
 
         <Card>
+       
           <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
-
+         
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
               <Table>
@@ -161,7 +168,7 @@ export default function User() {
                 />
                 <TableBody>
                   {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, name, role, status, company, avatarUrl, isVerified } = row;
+                    const { id, name, role, action, company, win, profit ,avatarUrl, price } = row;
                     const isItemSelected = selected.indexOf(name) !== -1;
 
                     return (
@@ -185,13 +192,18 @@ export default function User() {
                           </Stack>
                         </TableCell>
                         <TableCell align="left">{company}</TableCell>
+                       
                         <TableCell align="left">{role}</TableCell>
-                        <TableCell align="left">{isVerified ? 'Yes' : 'No'}</TableCell>
-                        <TableCell align="left">
+                        <TableCell align="left">{profit}</TableCell>
+                        <TableCell align="left">{win}</TableCell>
+                        <TableCell align="left">{price}</TableCell>
+                        <TableCell align="left">{action}</TableCell>
+                        
+                        {/* <TableCell align="left">
                           <Label variant="ghost" color={(status === 'banned' && 'error') || 'success'}>
                             {sentenceCase(status)}
                           </Label>
-                        </TableCell>
+                        </TableCell> */}
 
                         <TableCell align="right">
                           <UserMoreMenu />
