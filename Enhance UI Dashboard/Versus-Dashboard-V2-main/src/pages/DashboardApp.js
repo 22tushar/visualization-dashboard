@@ -8,7 +8,7 @@ import Page from '../components/Page';
 import Iconify from '../components/Iconify';
 import Filters from './Filters';
 import MultipleSelectCheckmarks from './select';
-import BasicSpeedDial from './Cal';
+// import BasicSpeedDial from './Cal';
 
 // sections
 import {
@@ -208,11 +208,11 @@ export default function DashboardApp() {
             />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={4}>
+          {/* <Grid item xs={12} md={6} lg={4}>
              <h2>Operations</h2>
              <h4>Please Click below Icon to perform Operations</h4>
              <BasicSpeedDial/>           
-          </Grid>
+          </Grid> */}
 
           {/* <Grid item xs={12} md={6} lg={4}>
             <AppTrafficBySite
