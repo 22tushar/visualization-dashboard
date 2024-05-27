@@ -2,9 +2,14 @@ import { faker } from '@faker-js/faker';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
+import TextField from '@mui/material/TextField';
 // components
 import Page from '../components/Page';
 import Iconify from '../components/Iconify';
+import Filters from './Filters';
+import MultipleSelectCheckmarks from './select';
+import BasicSpeedDial from './Cal';
+
 // sections
 import {
   AppTasks,
@@ -46,9 +51,45 @@ export default function DashboardApp() {
           <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary title="Bug Reports" total={234} color="error" icon={'ant-design:bug-filled'} />
           </Grid>
+     
+
+          
+        
+          <Grid item xs={12} md={6} lg={8}>
+           
+          <TextField
+          required
+          id="outlined-required"
+          label="Required"
+          defaultValue="Name"
+          />
+
+            
+          <TextField
+          required
+          id="outlined-required"
+          label="Required"
+          defaultValue="Description"
+          />
+
+          </Grid>
+
+      
+      
+
+          {/* <Grid item xs={12} md={6} lg={8}>
+            <Filters/>
+          </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
-            <AppWebsiteVisits
+            <MultipleSelectCheckmarks/>
+          </Grid>
+
+           */}
+
+          <Grid item xs={12} md={6} lg={8}>
+          <Filters/>
+            {/* <AppWebsiteVisits
               title="Website Visits"
               subheader="(+47%) than last year"
               chartLabels={[
@@ -84,11 +125,12 @@ export default function DashboardApp() {
                   data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
                 },
               ]}
-            />
+            /> */}
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
-            <AppCurrentVisits
+          <MultipleSelectCheckmarks/>
+            {/* <AppCurrentVisits
               title="Current Visits"
               chartData={[
                 { label: 'America', value: 4344 },
@@ -102,7 +144,7 @@ export default function DashboardApp() {
                 theme.palette.chart.violet[0],
                 theme.palette.chart.yellow[0],
               ]}
-            />
+            /> */}
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
@@ -125,33 +167,8 @@ export default function DashboardApp() {
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
-            <AppCurrentSubject
-              title="Current Language"
-              chartLabels={['JavaScript', 'TypeScript', 'Golang', 'Rust', 'Flutter', 'C++']}
-              chartData={[
-                { name: 'Series 1', data: [80, 50, 30, 40, 100, 20] },
-                { name: 'Series 2', data: [20, 50, 40, 80, 70, 80] },
-                { name: 'Series 3', data: [44, 76, 78, 13, 43, 10] },
-              ]}
-              chartColors={[...Array(6)].map(() => theme.palette.text.secondary)}
-            />
-          </Grid>
 
-          <Grid item xs={12} md={6} lg={8}>
-            <AppNewsUpdate
-              title="News Update"
-              list={[...Array(5)].map((_, index) => ({
-                id: faker.datatype.uuid(),
-                title: faker.name.jobTitle(),
-                description: faker.name.jobTitle(),
-                image: `/static/mock-images/covers/cover_${index + 1}.jpg`,
-                postedAt: faker.date.recent(),
-              }))}
-            />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
-            <AppOrderTimeline
+          <AppOrderTimeline
               title="Order Timeline"
               list={[...Array(5)].map((_, index) => ({
                 id: faker.datatype.uuid(),
@@ -166,9 +183,38 @@ export default function DashboardApp() {
                 time: faker.date.past(),
               }))}
             />
+            {/* <AppCurrentSubject
+              title="Current Language"
+              chartLabels={['JavaScript', 'TypeScript', 'Golang', 'Rust', 'Flutter', 'C++']}
+              chartData={[
+                { name: 'Series 1', data: [80, 50, 30, 40, 100, 20] },
+                { name: 'Series 2', data: [20, 50, 40, 80, 70, 80] },
+                { name: 'Series 3', data: [44, 76, 78, 13, 43, 10] },
+              ]}
+              chartColors={[...Array(6)].map(() => theme.palette.text.secondary)}
+            /> */}
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={8}>
+          <AppTasks
+              title="Tasks"
+              list={[
+                { id: '1', label: 'Create FireStone Logo' },
+                { id: '2', label: 'Add SCSS and JS files if required' },
+                { id: '3', label: 'Stakeholder Meeting' },
+                { id: '4', label: 'Scoping & Estimations' },
+                { id: '5', label: 'Sprint Showcase' },
+              ]}
+            />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
+             <h2>Operations</h2>
+             <h4>Please Click below Icon to perform Operations</h4>
+             <BasicSpeedDial/>           
+          </Grid>
+
+          {/* <Grid item xs={12} md={6} lg={4}>
             <AppTrafficBySite
               title="Traffic by Site"
               list={[
@@ -194,9 +240,9 @@ export default function DashboardApp() {
                 },
               ]}
             />
-          </Grid>
+          </Grid> */}
 
-          <Grid item xs={12} md={6} lg={8}>
+          {/* <Grid item xs={12} md={6} lg={8}>
             <AppTasks
               title="Tasks"
               list={[
@@ -207,7 +253,7 @@ export default function DashboardApp() {
                 { id: '5', label: 'Sprint Showcase' },
               ]}
             />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </Page>
