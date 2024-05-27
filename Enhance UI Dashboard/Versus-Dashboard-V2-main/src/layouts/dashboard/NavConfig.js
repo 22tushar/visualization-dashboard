@@ -12,7 +12,7 @@ const navConfig = [
     icon: getIcon('eva:pie-chart-2-fill'),
   },
   {
-    title: 'Others',
+    title: 'scanners',
     path: '/dashboard/app',
     icon: getIcon('eva:people-fill'),
   },
